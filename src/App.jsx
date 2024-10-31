@@ -1,5 +1,5 @@
 import { createSignal, onMount, createEffect, For, Show } from 'solid-js';
-import { createEvent, supabase } from './supabaseClient';
+import { createEvent } from './supabaseClient';
 import { useNavigate } from '@solidjs/router';
 import { SolidMarkdown } from 'solid-markdown';
 
@@ -170,11 +170,11 @@ function App() {
   };
 
   return (
-    <div class="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4">
+    <div class="h-full bg-gradient-to-br from-purple-100 to-blue-100 p-4">
       <Show
         when={currentPage() === 'homePage'}
         fallback={
-          <div class="flex items-center justify-center min-h-screen">
+          <div class="flex items-center justify-center h-full">
             <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
               <h2 class="text-3xl font-bold mb-6 text-center text-purple-600">Sign in with Activation Code</h2>
               <input
@@ -182,7 +182,7 @@ function App() {
                 placeholder="Enter Activation Code"
                 value={activationCode()}
                 onInput={(e) => setActivationCode(e.target.value)}
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-transparent box-border mb-4"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-transparent box-border mb-4 text-gray-800"
               />
               <button
                 onClick={handleActivationCodeLogin}
@@ -208,8 +208,8 @@ function App() {
             </button>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full">
-            <div class="col-span-1 md:col-span-2 lg:col-span-1 h-full">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="col-span-1 md:col-span-2 lg:col-span-1">
               <h2 class="text-2xl font-bold mb-4 text-purple-600">Add New Joke</h2>
               <form onSubmit={saveJoke} class="space-y-4">
                 <input
@@ -234,7 +234,7 @@ function App() {
                     class="flex-1 px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
                     disabled={loading()}
                   >
-                    {loading() ? 'Saving...' : 'Save Joke'}
+                    {loading() ? 'Please wait...' : 'Save Joke'}
                   </button>
                   <button
                     type="button"
@@ -250,7 +250,7 @@ function App() {
               </form>
             </div>
 
-            <div class="col-span-1 md:col-span-2 lg:col-span-1 h-full">
+            <div class="col-span-1 md:col-span-2 lg:col-span-1">
               <h2 class="text-2xl font-bold mb-4 text-purple-600">Joke List</h2>
               <div class="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto pr-4">
                 <For each={jokes()}>
@@ -264,7 +264,7 @@ function App() {
               </div>
             </div>
 
-            <div class="col-span-1 md:col-span-2 lg:col-span-1 h-full">
+            <div class="col-span-1 md:col-span-2 lg:col-span-1">
               <h2 class="text-2xl font-bold mb-4 text-purple-600">Additional Features</h2>
               <div class="space-y-4">
                 <button

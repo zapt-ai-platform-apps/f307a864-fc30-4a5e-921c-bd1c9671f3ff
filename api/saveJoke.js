@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     }
 
     const token = authHeader.split(' ')[1];
-    // In this example, the token is the activation code
+    // The token is the activation code
     const userId = token;
 
     const { setup, punchline } = req.body;
