@@ -11,8 +11,7 @@ Sentry.init({
   }
 });
 
-// Replace this with your actual activation code validation logic
-const validActivationCodes = ['ABC123', 'DEF456', 'GHI789'];
+const validActivationCodes = ['ABC123', 'DEF456', 'GHI789']; // Replace with your actual activation codes
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -33,10 +32,10 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Create a user object or retrieve from database
+    // Simulate user object creation or retrieval
     const user = {
       id: activationCode,
-      token: activationCode, // In this example, the activation code serves as the token
+      token: activationCode, // In a real app, generate a proper token
     };
 
     res.status(200).json({ user });
